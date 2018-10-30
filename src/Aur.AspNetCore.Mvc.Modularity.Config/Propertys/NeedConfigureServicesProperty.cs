@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Aur.AspNetCore.Mvc.Modularity.Config.Propertys
 {
-    class NeedConfigureServicesProperty : IPropertysBase<PropertyType>
+    public class NeedConfigureServicesProperty : IPropertysBase
     {
         #region Interface implementation
 

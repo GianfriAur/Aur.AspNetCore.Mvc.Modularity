@@ -4,11 +4,11 @@ using System.Text;
 using Aur.AspNetCore.Mvc.Modularity.Config.Enums;
 using Aur.AspNetCore.Mvc.Modularity.Config.Interfaces;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Aur.AspNetCore.Mvc.Modularity.Config.Propertys
 {
-    public class NeedConfigureProperty : IPropertysBase<PropertyType>
+    public class NeedConfigureProperty : IPropertysBase
     {
         #region Interface implementation
 
@@ -21,9 +21,9 @@ namespace Aur.AspNetCore.Mvc.Modularity.Config.Propertys
 
         #endregion
 
-        private Func<IApplicationBuilder, IHostingEnvironment, bool> _ConfigureProperty;
+        private Action<IApplicationBuilder, IHostingEnvironment> _ConfigureProperty;
 
-        public NeedConfigureProperty(Func<IApplicationBuilder, IHostingEnvironment,bool> ConfigureProperty)
+        public NeedConfigureProperty(Action<IApplicationBuilder, IHostingEnvironment> ConfigureProperty)
         {
             _ConfigureProperty = ConfigureProperty;
             _Error = null;

@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <OutputPath></OutputPath>
+    <DefineConstants />
+    <ErrorReport>none</ErrorReport>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+  </ItemGroup>
+  <PropertyGroup>
+    <BuildDependsOn>
+      AfterBuild;
+    </BuildDependsOn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+ 
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\src\Aur.AspNetCore.Mvc.Modularity.Config\Aur.AspNetCore.Mvc.Modularity.Config.csproj">
+      <Private>false</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\src\Aur.AspNetCore.Mvc.Modularity.Core\Aur.AspNetCore.Mvc.Modularity.Core.csproj">
+      <Private>false</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\src\Aur.AspNetCore.Mvc.Modularity.Plugin\Aur.AspNetCore.Mvc.Modularity.Plugin.csproj">
+      <Private>false</Private>
+    </ProjectReference>
+  </ItemGroup>
+ 
+  
+  <ItemGroup>
+    <Content Update="Views\PluginTest1\ExtTest.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\PluginTest1\Test1.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
+  <Target Name="PluginInject" AfterTargets="Build">
+    <Message Text="[COMPILATION PROCESS] =&gt; PluginInject copy bin/Debug/netcoreapp2.1/*.dll to ../../Program/TEST.BasicPlugin.Program/Plugins" Importance="High" />
+    <ItemGroup>
+      <FileFrom Include="./bin/Debug/netcoreapp2.1/*.dll" />
+    </ItemGroup>
+    <Copy SourceFiles="@(FileFrom)" DestinationFolder="$(OutputPath)\..\..\..\..\..\Program\TEST.BasicPlugin.Program\Plugins\" />
+  </Target>
+
+</Project>

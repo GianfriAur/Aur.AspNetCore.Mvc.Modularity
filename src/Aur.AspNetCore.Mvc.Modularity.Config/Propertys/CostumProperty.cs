@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Aur.AspNetCore.Mvc.Modularity.Config.Propertys
 {
-    class CostumProperty<T> : IPropertysBase<PropertyType>
+    class CostumProperty<T> : IPropertysBase
     {
         #region Interface implementation
 
@@ -21,7 +21,7 @@ namespace Aur.AspNetCore.Mvc.Modularity.Config.Propertys
 
         #endregion
 
-        private Action _CustomappliedTest;
+        private Action _CustomappliedTest = null;
 
         public CostumProperty(T value, Action appliedTest, string name)
         {

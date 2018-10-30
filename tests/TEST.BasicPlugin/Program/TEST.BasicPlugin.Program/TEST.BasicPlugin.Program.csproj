@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Home\index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Plugins\TEST.BasicPlugin.PluginTest1.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Plugins\*.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Home\index.cshtml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\src\Aur.AspNetCore.Mvc.Modularity.Config\Aur.AspNetCore.Mvc.Modularity.Config.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Aur.AspNetCore.Mvc.Modularity.Core\Aur.AspNetCore.Mvc.Modularity.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Aur.AspNetCore.Mvc.Modularity.Plugin\Aur.AspNetCore.Mvc.Modularity.Plugin.csproj" />
+  </ItemGroup>
+
+</Project>

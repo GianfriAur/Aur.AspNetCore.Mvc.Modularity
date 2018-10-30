@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Aur.AspNetCore.Mvc.Modularity.Config.Propertys
 {
-    class CustomConfigureProperty : IPropertysBase<PropertyType>
+    class CustomConfigureProperty : IPropertysBase
     {
         #region Interface implementation
 
