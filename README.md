@@ -2,7 +2,7 @@
 
 ![Aur.AspNetCore.Mvc.Modularity logo](doc/resource/logo/Aur.AspNetCore.Mvc.Modularity.png?raw=true)
 
-> :warning: è ancora in fase di sviluppo la prima versione. non è ancora usabile :warning:
+> :warning: the first version is still under development. it is not yet usable :warning:
 
 **Aur.AspNetCore.Mvc.Modularity** is a library that helps to realize applications, based on the concept of **mvc**, in a **modular** way.
 
@@ -35,4 +35,4 @@ all realization is completely expandable through **properties** that allow you t
 * and much more
 
 
-> :warning: è ancora in fase di sviluppo la prima versione. non è ancora usabile :warning:
+> :warning: the first version is still under development. it is not yet usable :warning:
