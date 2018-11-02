@@ -20,7 +20,7 @@ namespace TEST.BasicPlugin.PluginTest1.Controllers
 
         public IActionResult Test2()
         {
-            return View("~/PluginTest1/ExtTest.cshtml");
+            return View("~/Views/PluginTest1/ExtTest.cshtml");
         }
     }
 }

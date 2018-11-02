@@ -88,25 +88,30 @@ namespace Aur.AspNetCore.Mvc.Modularity.Plugin
                     default:
                         break;
                 }
+                switch (Index.Value.ControllerTypeResouces)
+                {
+                    case Enums.ControllerTypeResouces.Assembly:
+                        services.AddMvc().ConfigureApplicationPartManager(apm => apm.ApplicationParts.Add(new AssemblyPart(AssemblyLoadContext.Default.LoadFromAssemblyPath(Index.Key))));
+                        break;
+                    case Enums.ControllerTypeResouces.None:
+                        break;
+                    default:
+                        break;
+                }
             }
         }
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-        /*    foreach (var  Property in (PluginMap.Select((x) => x.Value).Where((x) => x.PropertyFactory.ContainsProperty(Config.Enums.PropertyType.NeedConfigure)).Select((x) => x.PropertyFactory.Where((y)=>y.Type==Config.Enums.PropertyType.NeedConfigure))))
-               {
-                System.Console.Write("");
-
-            }// Property.ConfigureProperty(app, env);*/
-
-
+            foreach (IPlugin Plugin in PluginMap.Select((x) => x.Value).Where((x) => x.PropertyFactory.ContainsProperty(Config.Enums.PropertyType.NeedConfigure)))
+                foreach (Config.Propertys.NeedConfigureProperty Property in Plugin.PropertyFactory.Where((x) => x.Type == Config.Enums.PropertyType.NeedConfigure))
+                    Property.ConfigureProperty(app, env);
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            foreach (Config.Propertys.NeedConfigureServicesProperty Property in this.PluginMap.Select((x) => x.Value).Where((x) => x.PropertyFactory.ContainsProperty(Config.Enums.PropertyType.NeedConfigureServices)).Select((x) => x.PropertyFactory.Select((y) => y.Type == Config.Enums.PropertyType.NeedConfigureServices)))
-                Property.ConfigureProperty(services);
+            foreach (IPlugin Plugin in PluginMap.Select((x) => x.Value).Where((x) => x.PropertyFactory.ContainsProperty(Config.Enums.PropertyType.NeedConfigureServices)))
+                foreach (Config.Propertys.NeedConfigureServicesProperty Property in Plugin.PropertyFactory.Where((x) => x.Type == Config.Enums.PropertyType.NeedConfigureServices))
+                    Property.ConfigureProperty(services);
         }
-
-
     }
 }

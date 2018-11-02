@@ -1,4 +1,5 @@
 # Aur.AspNetCore.Mvc.Modularity
+<kbd>Tested: :white_check_mark:</kbd> <kbd>Not Tested: :ballot_box_with_check:</kbd> <kbd>NeedFix: :wavy_dash:</kbd> <kbd>future implementation: :heavy_multiplication_x:</kbd>
 
 ![Aur.AspNetCore.Mvc.Modularity logo](doc/resource/logo/Aur.AspNetCore.Mvc.Modularity.png?raw=true)
 
